@@ -27,16 +27,18 @@ class BookingDetailPageCubit extends Cubit<BookingDetailPageState> {
   }
 
   Future<void> getMeetingRoomData(int id) async {
+    emit(state.copyWith(status: GetRoomStatus.pending));
     try {
       Response response = await dio.get("http://localhost:8080/rooms/$id");
       if (response.statusCode == 200) {
         Room room = Room.fromJson(response.data);
-        emit(state.copyWith(roomDetail: room));
+        emit(state.copyWith(roomDetail: room, status: GetRoomStatus.success));
       }
     } on DioException catch (e) {
       if (kDebugMode) {
         print(e);
       }
+      emit(state.copyWith(status: GetRoomStatus.failed));
     }
   }
 }

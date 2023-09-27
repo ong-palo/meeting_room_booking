@@ -53,7 +53,7 @@ class _SearchRoomPageState extends State<SearchRoomPage> {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text('Date'),
+              const Text('Date'),
               BlocBuilder<SearchRoomPageCubit, SearchRoomPageState>(
                 builder: (context, state) {
                   return InkWell(
@@ -184,7 +184,7 @@ class _SearchRoomPageState extends State<SearchRoomPage> {
                             .read<SearchRoomPageCubit>()
                             .getAllMeetingRooms()
                         : null,
-                    child: Text('Search'),
+                    child: const Text('Search'),
                   ),
                 ),
               ),
@@ -226,7 +226,7 @@ class _SearchRoomPageState extends State<SearchRoomPage> {
                                       .state
                                       .roomList![index]
                                       .id!);
-                          return context.go(RouteName.detailPage.name,
+                          return context.goNamed(RouteName.detailPage.name,
                               extra: args);
                         },
                         // onTap: () => Navigator.of(context).push(
