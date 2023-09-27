@@ -11,6 +11,14 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  bool? _isPasswordVisible;
+
+  @override
+  void initState() {
+    super.initState();
+    _isPasswordVisible = true;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -87,13 +95,24 @@ class _LoginPageState extends State<LoginPage> {
                           Expanded(
                             child: TextFormField(
                               decoration: InputDecoration(
-                                enabledBorder: OutlineInputBorder(
+                                enabledBorder: const OutlineInputBorder(
                                     borderSide:
                                         BorderSide(color: Colors.black)),
-                                focusedBorder: OutlineInputBorder(
+                                focusedBorder: const OutlineInputBorder(
                                     borderSide:
                                         BorderSide(color: Colors.black)),
+                                suffixIcon: IconButton(
+                                  icon: Icon(_isPasswordVisible!
+                                      ? Icons.visibility
+                                      : Icons.visibility_off),
+                                  onPressed: () {
+                                    setState(() {
+                                      _isPasswordVisible = !_isPasswordVisible!;
+                                    });
+                                  },
+                                ),
                               ),
+                              obscureText: _isPasswordVisible!,
                             ),
                           )
                         ],
@@ -110,9 +129,10 @@ class _LoginPageState extends State<LoginPage> {
                                 onPressed: () => context
                                     .pushNamed(RouteName.searchPage.name),
                                 style: ElevatedButton.styleFrom(
-                                    backgroundColor: Color(0xff5CC99B),
-                                    side: BorderSide(color: Color(0xff5CC99B))),
-                                child: Text("Login")),
+                                    backgroundColor: const Color(0xff5CC99B),
+                                    side: const BorderSide(
+                                        color: Color(0xff5CC99B))),
+                                child: const Text("Login")),
                           ))
                         ],
                       )
