@@ -39,7 +39,6 @@ class _BookingDetailPageState extends State<BookingDetailPage> {
       await context
           .read<BookingDetailPageCubit>()
           .getMeetingRoomData(widget.args.id);
-      print(context.read<BookingDetailPageCubit>().state.roomDetail);
       setup();
     });
   }
@@ -47,7 +46,6 @@ class _BookingDetailPageState extends State<BookingDetailPage> {
   void setup() {
     context.read<BookingDetailPageCubit>().setBookingDetails(
         widget.args.pickedDate, widget.args.startTime, widget.args.endTime);
-    print(context.read<BookingDetailPageCubit>().state.pickedDate);
   }
 
   @override
@@ -267,7 +265,7 @@ class BookingDetailPageBody extends StatelessWidget {
                   child: OutlinedButton(
                     style: OutlinedButton.styleFrom(
                         side: BorderSide(color: Color(greenColor))),
-                    onPressed: () => context.goNamed(RouteName.searchPage.name),
+                    onPressed: () => context.pop(true),
                     child: Text(
                       "Cancel",
                       style: TextStyle(color: Color(greenColor)),

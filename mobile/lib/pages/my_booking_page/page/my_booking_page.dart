@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:meeting_room_booking/common/common_app_bar.dart';
 import 'package:meeting_room_booking/pages/my_booking_page/components/mock_data.dart';
 import 'package:meeting_room_booking/pages/search_room/page/search_room_page.dart';
+import 'package:meeting_room_booking/routes.dart';
 import '../../../models/booking.dart';
 import '../components/booking_widget.dart';
 
@@ -154,10 +156,12 @@ class _MyBookingPageState extends State<MyBookingPage> {
                     child: SizedBox(
                   height: 75,
                   child: ElevatedButton(
-                    onPressed: () => Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (_) => const SearchRoomPage())),
+                    onPressed: () =>
+                        context.pushNamed(RouteName.searchPage.name),
+                    // onPressed: () => Navigator.push(
+                    //     context,
+                    //     MaterialPageRoute(
+                    //         builder: (_) => const SearchRoomPage())),
                     style: ElevatedButton.styleFrom(
                         backgroundColor: const Color.fromRGBO(92, 201, 155, 1)),
                     child: const Text(

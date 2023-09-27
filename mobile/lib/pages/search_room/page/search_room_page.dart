@@ -229,7 +229,7 @@ class _SearchRoomPageState extends State<SearchRoomPage> {
                                       .state
                                       .roomList![index]
                                       .id!);
-                          return context.goNamed(RouteName.detailPage.name,
+                          context.pushNamed(RouteName.detailPage.name,
                               extra: args);
                         },
                         // onTap: () => Navigator.of(context).push(
