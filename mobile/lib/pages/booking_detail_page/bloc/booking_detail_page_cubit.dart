@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meeting_room_booking/pages/booking_detail_page/bloc/booking_detail_page_state.dart';
@@ -32,6 +33,10 @@ class BookingDetailPageCubit extends Cubit<BookingDetailPageState> {
         Room room = Room.fromJson(response.data);
         emit(state.copyWith(roomDetail: room));
       }
-    } on DioException catch (e) {}
+    } on DioException catch (e) {
+      if (kDebugMode) {
+        print(e);
+      }
+    }
   }
 }
