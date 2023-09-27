@@ -48,9 +48,9 @@ class BookingWidget extends StatelessWidget {
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10), border: Border.all()),
         width: MediaQuery.of(context).size.width,
-        height: args.status == BookingStatus.reserved ? 193 : 130,
+        // height: args.status == BookingStatus.reserved ? 193 : 130,
         child: Padding(
-          padding: const EdgeInsets.fromLTRB(20, 20, 20, 0),
+          padding: const EdgeInsets.fromLTRB(20, 20, 20, 20),
           child: Flex(
             direction: Axis.vertical,
             children: [
