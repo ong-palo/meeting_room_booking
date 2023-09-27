@@ -46,7 +46,10 @@ class _SearchRoomPageState extends State<SearchRoomPage> {
         }
       },
       child: Scaffold(
-        appBar: const MeetRoomAppBar(),
+        appBar: const MeetRoomAppBar(
+          title: "Select meeting room",
+          image: AssetImage("assets/images/app_bar_cover.png"),
+        ),
         body: Padding(
           padding: const EdgeInsets.fromLTRB(22, 30, 22, 0),
           child: Column(

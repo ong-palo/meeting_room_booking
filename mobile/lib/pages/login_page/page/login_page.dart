@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:meeting_room_booking/pages/search_room/page/search_room_page.dart';
 import 'package:meeting_room_booking/routes.dart';
 
 class LoginPage extends StatefulWidget {
@@ -46,7 +45,7 @@ class _LoginPageState extends State<LoginPage> {
                   child: Column(
                     children: [
                       Row(
-                        children: [
+                        children: const [
                           Expanded(
                             child: Text(
                               "Email",
@@ -62,7 +61,7 @@ class _LoginPageState extends State<LoginPage> {
                         children: [
                           Expanded(
                             child: TextFormField(
-                              decoration: InputDecoration(
+                              decoration: const InputDecoration(
                                   enabledBorder: OutlineInputBorder(
                                       borderSide:
                                           BorderSide(color: Colors.black)),
@@ -74,11 +73,11 @@ class _LoginPageState extends State<LoginPage> {
                           )
                         ],
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 15,
                       ),
                       Row(
-                        children: [
+                        children: const [
                           Expanded(
                             child: Text(
                               "Password",
@@ -127,7 +126,7 @@ class _LoginPageState extends State<LoginPage> {
                             height: 75,
                             child: ElevatedButton(
                                 onPressed: () => context
-                                    .pushNamed(RouteName.searchPage.name),
+                                    .pushNamed(RouteName.myBookingPage.name),
                                 style: ElevatedButton.styleFrom(
                                     backgroundColor: const Color(0xff5CC99B),
                                     side: const BorderSide(

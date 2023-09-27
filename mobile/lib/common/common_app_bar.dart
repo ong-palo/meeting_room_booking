@@ -1,27 +1,35 @@
 import 'package:flutter/material.dart';
 
 class MeetRoomAppBar extends StatelessWidget with PreferredSizeWidget {
-  const MeetRoomAppBar({super.key});
+  const MeetRoomAppBar(
+      {super.key,
+      required this.title,
+      required this.image,
+      this.showBackButton = true});
+
+  final String title;
+  final AssetImage image;
+  final bool showBackButton;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.fromLTRB(22, 0, 22, 16),
-      decoration: const BoxDecoration(
-        borderRadius: BorderRadius.only(
+      decoration: BoxDecoration(
+        borderRadius: const BorderRadius.only(
           bottomLeft: Radius.circular(20),
           bottomRight: Radius.circular(20),
         ),
-        color: Color(0xFF191919),
+        color: const Color(0xFF191919),
         image: DecorationImage(
-          image: AssetImage('assets/images/app_bar_cover.png'),
+          image: image, // AssetImage('assets/images/app_bar_cover.png'),
           fit: BoxFit.fitHeight,
-          colorFilter: ColorFilter.mode(
+          colorFilter: const ColorFilter.mode(
             Color.fromARGB(80, 0, 0, 0),
             BlendMode.overlay,
           ),
         ),
-        boxShadow: [
+        boxShadow: const [
           BoxShadow(
             color: Color.fromARGB(75, 0, 0, 0),
             blurRadius: 4,
@@ -52,10 +60,10 @@ class MeetRoomAppBar extends StatelessWidget with PreferredSizeWidget {
               ],
             ),
             Row(
-              children: const [
+              children: [
                 Text(
-                  'Select Meeting Room',
-                  style: TextStyle(
+                  title, //'Select Meeting Room',
+                  style: const TextStyle(
                     fontFamily: 'Montserrat',
                     fontSize: 28,
                     fontWeight: FontWeight.w600,

@@ -3,6 +3,8 @@ import 'package:go_router/go_router.dart';
 import 'package:meeting_room_booking/pages/booking_detail_page/page/booking_detail_page.dart';
 import 'package:meeting_room_booking/pages/landing_page/page/landing_page.dart';
 import 'package:meeting_room_booking/pages/login_page/page/login_page.dart';
+import 'package:meeting_room_booking/pages/my_booking_page/components/booking_widget.dart';
+import 'package:meeting_room_booking/pages/my_booking_page/page/my_booking_page.dart';
 import 'package:meeting_room_booking/pages/search_room/page/search_room_page.dart';
 
 class Routes {
@@ -53,6 +55,29 @@ class Routes {
           );
         },
       ),
+      GoRoute(
+          name: RouteName.myBookingPage.name,
+          path: '/booking',
+          pageBuilder: (context, state) {
+            return buildPage(
+                key: state.pageKey,
+                child: const MyBookingPage(),
+                arguments: state.extra);
+          },
+          routes: [
+            GoRoute(
+              name: RouteName.myBookingModal.name,
+              path: 'modal',
+              pageBuilder: (context, state) {
+                BookingWidgetArguments args =
+                    state.extra as BookingWidgetArguments;
+                return buildPage(
+                    key: state.pageKey,
+                    child: BookingWidget(args: args),
+                    arguments: state.extra);
+              },
+            )
+          ])
     ],
   );
 }
@@ -71,7 +96,14 @@ MaterialPage<void> buildPage({
   );
 }
 
-enum RouteName { splashScreenPage, loginPage, searchPage, detailPage }
+enum RouteName {
+  splashScreenPage,
+  loginPage,
+  searchPage,
+  detailPage,
+  myBookingPage,
+  myBookingModal
+}
 
 extension RouteNameExtensions on RouteName {
   String get name {
@@ -84,6 +116,10 @@ extension RouteNameExtensions on RouteName {
         return 'search page';
       case RouteName.detailPage:
         return 'detail page';
+      case RouteName.myBookingPage:
+        return 'my booking page';
+      case RouteName.myBookingModal:
+        return 'my booking modal';
       default:
         return '';
     }
