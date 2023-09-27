@@ -9,7 +9,7 @@ class Booking {
   final DateTime? startAt;
   final DateTime? endAt;
 
-  Booking(
+  const Booking(
       {this.id,
       this.roomNo,
       this.status,

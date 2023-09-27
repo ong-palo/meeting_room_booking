@@ -59,7 +59,7 @@ class BookingWidget extends StatelessWidget {
                 children: [
                   Expanded(
                     child: Text(
-                      "Booking No. $args.bookingNo",
+                      "Booking No. ${args.bookingNo}",
                       style: const TextStyle(
                           fontFamily: "Open_Sans",
                           fontSize: 16,
@@ -74,7 +74,7 @@ class BookingWidget extends StatelessWidget {
               Flex(direction: Axis.horizontal, children: [
                 Expanded(
                   child: Text(
-                    "Room $args.roomNo",
+                    "Room ${args.roomNo}",
                     style: const TextStyle(
                         fontFamily: "Open_Sans",
                         fontSize: 16,

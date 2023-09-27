@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:meeting_room_booking/common/common_app_bar.dart';
+import 'package:meeting_room_booking/pages/my_booking_page/components/mock_data.dart';
 import 'package:meeting_room_booking/pages/search_room/page/search_room_page.dart';
 import '../../../models/booking.dart';
 import '../components/booking_widget.dart';
@@ -12,97 +13,12 @@ class MyBookingPage extends StatefulWidget {
 }
 
 class _MyBookingPageState extends State<MyBookingPage> {
-  final List<Booking> reservedBookings = [
-    Booking(
-        id: 1,
-        roomNo: 'AA',
-        status: BookingStatus.reserved,
-        bookingNo: '123',
-        maxGuest: 20,
-        startAt: DateTime.now(),
-        endAt: DateTime.now()),
-    Booking(
-        id: 2,
-        roomNo: 'AA',
-        status: BookingStatus.reserved,
-        bookingNo: '124',
-        maxGuest: 5,
-        startAt: DateTime.now(),
-        endAt: DateTime.now())
-  ];
-
-  final List<Booking> cancelledBookings = [
-    Booking(
-        id: 4,
-        roomNo: 'BB',
-        status: BookingStatus.cancelled,
-        bookingNo: '123',
-        maxGuest: 20,
-        startAt: DateTime.now(),
-        endAt: DateTime.now()),
-    Booking(
-        id: 5,
-        roomNo: 'BB',
-        status: BookingStatus.cancelled,
-        bookingNo: '123',
-        maxGuest: 5,
-        startAt: DateTime.now(),
-        endAt: DateTime.now()),
-    Booking(
-        id: 5,
-        roomNo: 'CC',
-        status: BookingStatus.cancelled,
-        bookingNo: '123',
-        maxGuest: 5,
-        startAt: DateTime.now(),
-        endAt: DateTime.now()),
-    Booking(
-        id: 5,
-        roomNo: '',
-        status: BookingStatus.cancelled,
-        bookingNo: '',
-        maxGuest: 5,
-        startAt: DateTime.now(),
-        endAt: DateTime.now()),
-    Booking(
-        id: 5,
-        roomNo: '',
-        status: BookingStatus.cancelled,
-        bookingNo: '',
-        maxGuest: 5,
-        startAt: DateTime.now(),
-        endAt: DateTime.now()),
-    Booking(
-        id: 5,
-        roomNo: '',
-        status: BookingStatus.cancelled,
-        bookingNo: '',
-        maxGuest: 5,
-        startAt: DateTime.now(),
-        endAt: DateTime.now()),
-    Booking(
-        id: 5,
-        roomNo: '',
-        status: BookingStatus.cancelled,
-        bookingNo: '',
-        maxGuest: 5,
-        startAt: DateTime.now(),
-        endAt: DateTime.now())
-  ];
-
-  final List<Booking> completedBookings = [
-    Booking(
-        id: 20,
-        roomNo: 'AA',
-        status: BookingStatus.completed,
-        bookingNo: '123',
-        maxGuest: 5,
-        startAt: DateTime.now(),
-        endAt: DateTime.now())
-  ];
-
+  MockData mockData = MockData();
   @override
   Widget build(BuildContext context) {
+    List<Booking> reservedBookings = mockData.getReservedBookings;
+    List<Booking> completedBookings = mockData.getCompletedBookings;
+    List<Booking> cancelledBookings = mockData.getCancelledBookings;
     return Scaffold(
       key: const Key("my_booking_page"),
       appBar: const MeetRoomAppBar(
@@ -169,13 +85,13 @@ class _MyBookingPageState extends State<MyBookingPage> {
                         physics: const NeverScrollableScrollPhysics(),
                         itemBuilder: (context, index) {
                           BookingWidgetArguments args = BookingWidgetArguments(
-                              id: reservedBookings[index].id!,
-                              status: reservedBookings[index].status!,
-                              bookingNo: reservedBookings[index].bookingNo!,
-                              roomNo: reservedBookings[index].roomNo!,
-                              maxGuest: reservedBookings[index].maxGuest!,
-                              startAt: reservedBookings[index].startAt!,
-                              endAt: reservedBookings[index].endAt!);
+                              id: cancelledBookings[index].id!,
+                              status: cancelledBookings[index].status!,
+                              bookingNo: cancelledBookings[index].bookingNo!,
+                              roomNo: cancelledBookings[index].roomNo!,
+                              maxGuest: cancelledBookings[index].maxGuest!,
+                              startAt: cancelledBookings[index].startAt!,
+                              endAt: cancelledBookings[index].endAt!);
                           return InkWell(
                             child: BookingWidget(args: args),
                           );
@@ -205,13 +121,13 @@ class _MyBookingPageState extends State<MyBookingPage> {
                         physics: const NeverScrollableScrollPhysics(),
                         itemBuilder: (context, index) {
                           BookingWidgetArguments args = BookingWidgetArguments(
-                              id: reservedBookings[index].id!,
-                              status: reservedBookings[index].status!,
-                              bookingNo: reservedBookings[index].bookingNo!,
-                              roomNo: reservedBookings[index].roomNo!,
-                              maxGuest: reservedBookings[index].maxGuest!,
-                              startAt: reservedBookings[index].startAt!,
-                              endAt: reservedBookings[index].endAt!);
+                              id: completedBookings[index].id!,
+                              status: completedBookings[index].status!,
+                              bookingNo: completedBookings[index].bookingNo!,
+                              roomNo: completedBookings[index].roomNo!,
+                              maxGuest: completedBookings[index].maxGuest!,
+                              startAt: completedBookings[index].startAt!,
+                              endAt: completedBookings[index].endAt!);
                           return InkWell(
                             child: BookingWidget(args: args),
                           );
