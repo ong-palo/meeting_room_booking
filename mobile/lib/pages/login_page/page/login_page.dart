@@ -13,12 +13,9 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  bool? _isPasswordVisible;
-
   @override
   void initState() {
     super.initState();
-    _isPasswordVisible = true;
   }
 
   @override
