@@ -19,6 +19,12 @@ class LoginCubit extends Cubit<LoginState> {
     ));
   }
 
+  void setPasswordVisibility() {
+    emit(state.copyWith(
+      passwordVisible: !state.passwordVisible!,
+    ));
+  }
+
   Future<void> login() async {
     try {} on DioException catch (e) {}
   }

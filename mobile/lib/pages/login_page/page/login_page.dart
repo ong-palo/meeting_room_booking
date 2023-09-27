@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:meeting_room_booking/pages/login_page/bloc/login_cubit.dart';
+import 'package:meeting_room_booking/pages/login_page/bloc/login_state.dart';
 import 'package:meeting_room_booking/routes.dart';
 
 class LoginPage extends StatefulWidget {
@@ -68,7 +71,7 @@ class _LoginPageState extends State<LoginPage> {
                                   focusedBorder: OutlineInputBorder(
                                       borderSide:
                                           BorderSide(color: Colors.black)),
-                                  labelText: "Email"),
+                                  hintText: "Email"),
                             ),
                           )
                         ],
@@ -92,26 +95,36 @@ class _LoginPageState extends State<LoginPage> {
                       Row(
                         children: [
                           Expanded(
-                            child: TextFormField(
-                              decoration: InputDecoration(
-                                enabledBorder: const OutlineInputBorder(
-                                    borderSide:
-                                        BorderSide(color: Colors.black)),
-                                focusedBorder: const OutlineInputBorder(
-                                    borderSide:
-                                        BorderSide(color: Colors.black)),
-                                suffixIcon: IconButton(
-                                  icon: Icon(_isPasswordVisible!
-                                      ? Icons.visibility
-                                      : Icons.visibility_off),
-                                  onPressed: () {
-                                    setState(() {
-                                      _isPasswordVisible = !_isPasswordVisible!;
-                                    });
-                                  },
-                                ),
-                              ),
-                              obscureText: _isPasswordVisible!,
+                            child: BlocSelector<LoginCubit, LoginState, bool>(
+                              selector: (state) => state.passwordVisible!,
+                              builder: (context, passwordVisible) {
+                                return TextFormField(
+                                  decoration: InputDecoration(
+                                    enabledBorder: const OutlineInputBorder(
+                                        borderSide:
+                                            BorderSide(color: Colors.black)),
+                                    focusedBorder: const OutlineInputBorder(
+                                        borderSide:
+                                            BorderSide(color: Colors.black)),
+                                    suffixIcon: IconButton(
+                                      icon: Icon(passwordVisible
+                                          ? Icons.visibility
+                                          : Icons.visibility_off),
+                                      onPressed: () {
+                                        context
+                                            .read<LoginCubit>()
+                                            .setPasswordVisibility();
+                                        // setState(() {
+                                        //   _isPasswordVisible =
+                                        //       !_isPasswordVisible!;
+                                        // });
+                                      },
+                                    ),
+                                    hintText: 'Password',
+                                  ),
+                                  obscureText: passwordVisible,
+                                );
+                              },
                             ),
                           )
                         ],
