@@ -10,10 +10,11 @@ import 'steps/expect_element_appear.dart';
 import 'steps/expect_text_appear.dart';
 import 'steps/open_app.dart';
 import 'steps/page_load.dart';
+import 'steps/tap.dart';
 
 Future<void> main() {
   final config = FlutterTestConfiguration()
-    ..features = [Glob(r"test_driver/features/*.feature")]
+    ..features = [Glob(r"features/*.feature")]
     ..stepDefinitions = [
       appLoad(),
       elementLoaded(),
@@ -23,6 +24,7 @@ Future<void> main() {
       expectElementAppeared(),
       expectTextAppeared(),
       openApp(),
+      tap(),
     ]
     ..reporters = [
       ProgressReporter(),

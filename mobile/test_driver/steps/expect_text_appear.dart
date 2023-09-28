@@ -13,7 +13,7 @@ StepDefinitionGeneric expectTextAppeared() {
       matching: find.text(text),
       matchRoot: true,
     );
-    // final found = await context.world.driver!.getText(finder);
-    context.expect(finder, text);
+    final found = await context.world.driver!.getText(finder);
+    context.expect(found, text);
   });
 }

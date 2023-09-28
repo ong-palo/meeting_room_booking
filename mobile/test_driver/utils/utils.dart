@@ -1,3 +1,4 @@
+import 'package:flutter_driver/flutter_driver.dart';
 import 'package:flutter_driver/src/driver/driver.dart';
 
 Future<bool> isAppeared(
@@ -25,6 +26,8 @@ createFinderByTag(dynamic tag) {
     for (var i = 1; i < tag.length; i++) {
       finder = finder.childByTag(tag[i]);
     }
+  } else if (tag is SerializableFinder) {
+    finder = tag;
   } else {
     throw UnsupportedError(
       'Tag parameter must be `String` or `List<String>` which currently is `${tag.runtimeType}`',

@@ -8,6 +8,7 @@ StepDefinitionGeneric expectElementAppeared() {
   return then1<String, FlutterWorld>("I should see {string}",
       (key, context) async {
     final finder = find.byValueKey(key);
+    await Future.delayed(const Duration(milliseconds: 3000));
     await isAppeared(context.world.driver!, finder);
   });
 }

@@ -102,7 +102,7 @@ class _MeetingRoomLandingPageState extends State<MeetingRoomLandingPage> {
                           child: SizedBox(
                             height: 75,
                             child: ElevatedButton(
-                              key: const Key("landing_page_login_ubtton"),
+                              key: const Key("landing_page_login_button"),
                               style: ElevatedButton.styleFrom(
                                 splashFactory: NoSplash.splashFactory,
                                 backgroundColor: const Color(0xFF5CC99B),

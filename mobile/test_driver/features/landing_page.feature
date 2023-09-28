@@ -6,6 +6,6 @@ Feature: Landing page
     And I should see "landing_page_login_button"
     And I should see "landing_page_sign_up_button"
 
-    When I tap on "landing_page_login_button"
-    Then I should see "login_page" page
+    When I tap the "landing_page_login_button"
+    Then I am in "login_page" page
 

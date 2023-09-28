@@ -8,7 +8,8 @@ StepDefinitionGeneric enterText() {
     (tag, text, context) async {
       var finder = find.byValueKey(tag);
       await Future.delayed(const Duration(milliseconds: 1000));
-      context.world.driver!.enterText(text);
+      // context.world.driver!.enterText(text);
+      await FlutterDriverUtils.enterText(context.world.driver!, finder, text);
     },
   );
 }
