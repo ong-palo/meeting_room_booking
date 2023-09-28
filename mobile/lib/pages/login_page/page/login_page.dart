@@ -108,7 +108,7 @@ class _LoginPageState extends State<LoginPage> {
                                         borderSide:
                                             BorderSide(color: Colors.black)),
                                     suffixIcon: IconButton(
-                                      icon: Icon(passwordVisible
+                                      icon: Icon(!passwordVisible
                                           ? Icons.visibility
                                           : Icons.visibility_off),
                                       onPressed: () {
@@ -119,7 +119,7 @@ class _LoginPageState extends State<LoginPage> {
                                     ),
                                     hintText: 'Password',
                                   ),
-                                  obscureText: passwordVisible,
+                                  obscureText: !passwordVisible,
                                 );
                               },
                             ),
