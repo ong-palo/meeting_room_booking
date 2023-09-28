@@ -6,6 +6,10 @@ import 'steps/app_load.dart';
 import 'steps/chill_out.dart';
 import 'steps/element_load.dart';
 import 'steps/enter_text.dart';
+import 'steps/expect_element_appear.dart';
+import 'steps/expect_text_appear.dart';
+import 'steps/open_app.dart';
+import 'steps/page_load.dart';
 
 Future<void> main() {
   final config = FlutterTestConfiguration()
@@ -15,6 +19,10 @@ Future<void> main() {
       elementLoaded(),
       chill(),
       enterText(),
+      pageLoaded(),
+      expectElementAppeared(),
+      expectTextAppeared(),
+      openApp(),
     ]
     ..reporters = [
       ProgressReporter(),
@@ -40,6 +48,5 @@ Future<void> main() {
         true; // uncomment to see command invoked to start the flutter test app
   // ..verboseFlutterProcessLogs = true // uncomment to see the verbose output from the Flutter process
   // ..flutterBuildTimeout = Duration(minutes: 3) // uncomment to change the default period that flutter is expected to build and start the app within
-
   return GherkinRunner().execute(config);
 }

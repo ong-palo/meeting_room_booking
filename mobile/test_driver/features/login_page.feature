@@ -1,8 +1,7 @@
 Feature: Login page
 
     Scenario: As a user, I have launched the meeting room booking app
-        Given: I open the app
-        When: I am in "landing_page"
+        Given: I am in "landing_page"
 
         When I tap on "landing_page_login_button"
         Then I should see "login_page"

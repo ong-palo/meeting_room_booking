@@ -4,7 +4,7 @@ import 'package:gherkin/gherkin.dart';
 
 import '../utils/utils.dart';
 
-StepDefinitionGeneric expectElementAppeared() {
+StepDefinitionGeneric expectTextAppeared() {
   return then2<String, String, FlutterWorld>(
       "I should see value {string} appear in {string}",
       (text, key, context) async {
