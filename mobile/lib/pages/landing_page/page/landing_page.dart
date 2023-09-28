@@ -15,6 +15,7 @@ class _MeetingRoomLandingPageState extends State<MeetingRoomLandingPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: const Key("landing_page"),
       body: Stack(
         children: [
           // back layer
@@ -34,6 +35,7 @@ class _MeetingRoomLandingPageState extends State<MeetingRoomLandingPage> {
                 child: Image.asset(
                   'assets/images/palo_logo.png',
                   fit: BoxFit.fitHeight,
+                  key: const Key("landing_page_palo_logo"),
                 ),
               )
             ],
@@ -90,6 +92,7 @@ class _MeetingRoomLandingPageState extends State<MeetingRoomLandingPage> {
                           color: Colors.black,
                         ),
                         softWrap: true,
+                        key: Key("landing_page_intro_text"),
                       ),
                     ),
                     const Spacer(),
@@ -99,6 +102,7 @@ class _MeetingRoomLandingPageState extends State<MeetingRoomLandingPage> {
                           child: SizedBox(
                             height: 75,
                             child: ElevatedButton(
+                              key: const Key("landing_page_login_ubtton"),
                               style: ElevatedButton.styleFrom(
                                 splashFactory: NoSplash.splashFactory,
                                 backgroundColor: const Color(0xFF5CC99B),
@@ -131,6 +135,7 @@ class _MeetingRoomLandingPageState extends State<MeetingRoomLandingPage> {
                           child: SizedBox(
                             height: 75,
                             child: OutlinedButton(
+                              key: const Key("landing_page_sign_up_button"),
                               style: OutlinedButton.styleFrom(
                                 splashFactory: NoSplash.splashFactory,
                                 side: const BorderSide(

@@ -21,12 +21,14 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: const Key('login_page'),
       body: Container(
         width: MediaQuery.of(context).size.width,
         decoration: const BoxDecoration(
-            image: DecorationImage(
-                image: AssetImage('assets/images/meeting_room.png'),
-                fit: BoxFit.fitHeight)),
+          image: DecorationImage(
+              image: AssetImage('assets/images/meeting_room.png'),
+              fit: BoxFit.fitHeight),
+        ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -61,13 +63,14 @@ class _LoginPageState extends State<LoginPage> {
                         children: [
                           Expanded(
                             child: TextFormField(
+                              key: const Key("login_page_email_input"),
                               decoration: const InputDecoration(
                                   enabledBorder: OutlineInputBorder(
-                                      borderSide:
-                                          BorderSide(color: Colors.black)),
+                                    borderSide: BorderSide(color: Colors.black),
+                                  ),
                                   focusedBorder: OutlineInputBorder(
-                                      borderSide:
-                                          BorderSide(color: Colors.black)),
+                                    borderSide: BorderSide(color: Colors.black),
+                                  ),
                                   hintText: "Email"),
                             ),
                           )
@@ -96,6 +99,7 @@ class _LoginPageState extends State<LoginPage> {
                               selector: (state) => state.passwordVisible!,
                               builder: (context, passwordVisible) {
                                 return TextFormField(
+                                  key: const Key("login_page_password_input"),
                                   decoration: InputDecoration(
                                     enabledBorder: const OutlineInputBorder(
                                         borderSide:
@@ -111,10 +115,6 @@ class _LoginPageState extends State<LoginPage> {
                                         context
                                             .read<LoginCubit>()
                                             .setPasswordVisibility();
-                                        // setState(() {
-                                        //   _isPasswordVisible =
-                                        //       !_isPasswordVisible!;
-                                        // });
                                       },
                                     ),
                                     hintText: 'Password',
@@ -135,13 +135,15 @@ class _LoginPageState extends State<LoginPage> {
                               child: SizedBox(
                             height: 75,
                             child: ElevatedButton(
-                                onPressed: () => context
-                                    .pushNamed(RouteName.myBookingPage.name),
-                                style: ElevatedButton.styleFrom(
-                                    backgroundColor: const Color(0xff5CC99B),
-                                    side: const BorderSide(
-                                        color: Color(0xff5CC99B))),
-                                child: const Text("Login")),
+                              key: const Key("login_page_login_button"),
+                              onPressed: () => context
+                                  .pushNamed(RouteName.myBookingPage.name),
+                              style: ElevatedButton.styleFrom(
+                                  backgroundColor: const Color(0xff5CC99B),
+                                  side: const BorderSide(
+                                      color: Color(0xff5CC99B))),
+                              child: const Text("Login"),
+                            ),
                           ))
                         ],
                       )
